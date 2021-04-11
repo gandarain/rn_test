@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {View, ScrollView, Alert} from 'react-native'
 import {useDispatch, useSelector} from 'react-redux'
 import Header from '../../assets/components/header'
@@ -9,6 +9,7 @@ import {useNavigation} from '@react-navigation/native'
 import TextInputComponent from '../../assets/components/textInput'
 import TextErrorComponent from '../../assets/components/textErrorComponent'
 import ButtonFullComponent from '../../assets/components/buttonFull'
+import LoadingComponent from '../../assets/components/loader'
 import {addDataUser} from '../../redux/actions/addUserAction'
 import {postUser, patchUser} from '../../services'
 
@@ -16,12 +17,15 @@ const CreateScreen = () => {
   const dispatch = useDispatch()
   const navigation = useNavigation()
   const addUserReducer = useSelector((state) => state.addUserReducer)
+  const [loading, setLoading] = useState(false)
 
   const createUser = async () => {
     try {
       await postUser(addUserReducer)
+      setLoading(false)
       navigation.goBack()
     } catch (error) {
+      setLoading(false)
       Alert.alert('Error', 'Something wrong with our server')
     }
   }
@@ -31,13 +35,16 @@ const CreateScreen = () => {
     delete body.id
     try {
       await patchUser(body, addUserReducer.id)
+      setLoading(false)
       navigation.goBack()
     } catch (error) {
+      setLoading(false)
       Alert.alert('Error', 'Something wrong with our server')
     }
   }
 
   const submitDataUser = async () => {
+    setLoading(true)
     if (addUserReducer.id) {
       editUser()
     } else {
@@ -130,6 +137,7 @@ const CreateScreen = () => {
             </View>
           )}
         </Formik>
+        <LoadingComponent loading={loading} closeModal={() => setLoading(false)} />
       </ScrollView>
     </View>
   )

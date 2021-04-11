@@ -7,7 +7,8 @@ const colorThemes = {
   borderDark: '#888888',
   background: '#EEEEEE',
   font: '#5E5E5E',
-  error: '#FF0000'
+  error: '#FF0000',
+  loading: 'rgba(0, 0, 0, 0.7)'
 }
 
 export default colorThemes
