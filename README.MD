@@ -12,5 +12,5 @@ Simple CRUD mobile app with React Native. Create 2 screens, list contact and cre
 
 - npm install
 - cd ios && pod install
-- react-native start
+- npx react-native start
 - react-native run-android or react-native run-ios
