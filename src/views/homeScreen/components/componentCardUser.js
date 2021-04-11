@@ -9,7 +9,7 @@ const ComponentCardUser = ({item, requestDelete, requestEdit}) => {
     <View style={styles.container}>
       <View style={styles.containerUserDetail}>
         <View style={styles.containerImageUser}>
-          <Image source={{uri: item.photo}} style={styles.image} />
+          <Image resizeMode="contain" source={{uri: item.photo}} style={styles.image} />
         </View>
         <View style={styles.containerUserData}>
           <Text style={styles.textUserName}>

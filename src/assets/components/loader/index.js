@@ -8,7 +8,7 @@ const LoadingComponent = ({loading, closeModal}) => {
     <Modal animationType="fade" transparent={true} visible={loading} onRequestClose={() => closeModal()}>
       <View style={styles.container}>
         <View style={styles.containerActivityIndicator}>
-          <ActivityIndicator color={color.themeColor} size="large" />
+          <ActivityIndicator color={color.thema} size="large" />
         </View>
       </View>
     </Modal>
