@@ -1,15 +1,14 @@
 # Front End Coding Test PT Code Development Indonesia
 
 # Description
-Create list user and add / edit user screen.
-Using redux to store user data screen.
+Simple CRUD mobile app with React Native. Create 2 screens, list contact and create / edit contact. Use Redux to store contact value.
 
 ## Requirement
 
 - React Native 0.64
 - Xcode 12
 
-- ## How to run
+## How to run
 
 - npm install
 - cd ios && pod install
