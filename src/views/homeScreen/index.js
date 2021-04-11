@@ -1,13 +1,16 @@
 import React, {useEffect, useState} from 'react'
 import {View, SafeAreaView, StatusBar, Platform, FlatList, Alert} from 'react-native'
 import {useNavigation} from '@react-navigation/native'
+import {useDispatch} from 'react-redux'
 import {getContacts, deleteUser} from '../../services'
+import {setDataUser} from '../../redux/actions/addUserAction'
 import ComponentCardUser from './components/componentCardUser'
 import ComponentHeader from './components/componentHeader'
 import color from '../../assets/styles/colors'
 import styles from './styles/styleHome'
 
 const HomeScreen = () => {
+  const dispatch = useDispatch()
   const navigation = useNavigation()
   const [listContacts, setListContacts] = useState([])
   const [loading, setLoading] = useState(true)
@@ -64,6 +67,11 @@ const HomeScreen = () => {
     ])
   }
 
+  const editUser = (data) => {
+    dispatch(setDataUser({id: data.id, firstName: data.firstName, lastName: data.lastName, age: data.age.toString(), photo: data.photo}))
+    navigation.navigate('Create')
+  }
+
   return (
     <View style={styles.container}>
       <StatusBar barStyle={Platform.OS === 'android' ? 'light-content' : 'dark-content'} hidden={false} backgroundColor={color.thema} translucent />
@@ -73,7 +81,7 @@ const HomeScreen = () => {
             onRefresh={() => onRefresh()}
             refreshing={loading}
             data={listContacts}
-            renderItem={({item}) => <ComponentCardUser item={item} requestDelete={(id) => requestDelete(id)} />}
+            renderItem={({item}) => <ComponentCardUser item={item} requestDelete={(id) => requestDelete(id)} requestEdit={() => editUser(item)} />}
             keyExtractor={(item) => item.id.toString()}
             ListHeaderComponent={() => <ComponentHeader />}
           />

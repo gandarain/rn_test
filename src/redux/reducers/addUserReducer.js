@@ -1,6 +1,7 @@
-import {ADD_DATA_USER, REMOVE_DATA_USER} from '../types'
+import {ADD_DATA_USER, REMOVE_DATA_USER, SET_DATA_USER} from '../types'
 
 const initialState = {
+  id: '',
   firstName: '',
   lastName: '',
   age: '',
@@ -16,6 +17,16 @@ function addUserReducer(state, action) {
         [action.data.name]: action.data.value
       }
 
+    case SET_DATA_USER:
+      return {
+        ...setState,
+        id: action.data.id,
+        firstName: action.data.firstName,
+        lastName: action.data.lastName,
+        age: action.data.age,
+        photo: action.data.photo
+      }
+
     case REMOVE_DATA_USER:
       return {
         firstName: '',
@@ -23,7 +34,7 @@ function addUserReducer(state, action) {
         age: '',
         photo: ''
       }
-    
+
     default:
       return setState
   }

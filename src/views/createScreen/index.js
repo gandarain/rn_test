@@ -4,25 +4,44 @@ import {useDispatch, useSelector} from 'react-redux'
 import Header from '../../assets/components/header'
 import * as yup from 'yup'
 import {Formik} from 'formik'
+import _ from 'lodash'
 import {useNavigation} from '@react-navigation/native'
 import TextInputComponent from '../../assets/components/textInput'
 import TextErrorComponent from '../../assets/components/textErrorComponent'
 import ButtonFullComponent from '../../assets/components/buttonFull'
 import {addDataUser} from '../../redux/actions/addUserAction'
-import {postUser} from '../../services'
+import {postUser, patchUser} from '../../services'
 
 const CreateScreen = () => {
   const dispatch = useDispatch()
   const navigation = useNavigation()
   const addUserReducer = useSelector((state) => state.addUserReducer)
 
-  const submitDataUser = async () => {
-    console.log('Add User Reducer ', addUserReducer)
+  const createUser = async () => {
     try {
       await postUser(addUserReducer)
       navigation.goBack()
     } catch (error) {
       Alert.alert('Error', 'Something wrong with our server')
+    }
+  }
+
+  const editUser = async () => {
+    const body = _.cloneDeep(addUserReducer)
+    delete body.id
+    try {
+      await patchUser(body, addUserReducer.id)
+      navigation.goBack()
+    } catch (error) {
+      Alert.alert('Error', 'Something wrong with our server')
+    }
+  }
+
+  const submitDataUser = async () => {
+    if (addUserReducer.id) {
+      editUser()
+    } else {
+      createUser()
     }
   }
 

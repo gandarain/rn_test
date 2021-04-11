@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 import color from '../../../assets/styles/colors'
 import styles from '../styles/styleComponentCardUser'
 
-const ComponentCardUser = ({item, requestDelete}) => {
+const ComponentCardUser = ({item, requestDelete, requestEdit}) => {
   return (
     <View style={styles.container}>
       <View style={styles.containerUserDetail}>
@@ -19,7 +19,7 @@ const ComponentCardUser = ({item, requestDelete}) => {
         </View>
       </View>
       <View style={styles.containerButton}>
-        <TouchableOpacity onPress={() => requestDelete()} style={styles.containerButtonEdit}>
+        <TouchableOpacity onPress={() => requestEdit()} style={styles.containerButtonEdit}>
           <Icon name="pencil" size={30} color={color.thema} />
           <Text style={styles.textEdit}>Edit</Text>
         </TouchableOpacity>
