@@ -5,16 +5,16 @@ import color from '../../../assets/styles/colors'
 import styles from '../styles/styleComponentCardUser'
 
 const ComponentCardUser = ({item, requestDelete}) => {
-	return (
-		<View style={styles.container}>
-		  <View style={styles.containerUserDetail}>
+  return (
+    <View style={styles.container}>
+      <View style={styles.containerUserDetail}>
         <View style={styles.containerImageUser}>
-          <Image 
-            source={{uri: 'https://pbs.twimg.com/profile_images/763061332702736385/KoK6gHzp_400x400.jpg'}} 
-            style={styles.image} />
+          <Image source={{uri: item.photo}} style={styles.image} />
         </View>
         <View style={styles.containerUserData}>
-          <Text style={styles.textUserName}>{item.firstName} {item.lastName}</Text>
+          <Text style={styles.textUserName}>
+            {item.firstName} {item.lastName}
+          </Text>
           <Text style={styles.textUserAge}>{item.age}</Text>
         </View>
       </View>

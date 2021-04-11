@@ -1,4 +1,4 @@
-import {StyleSheet, Platform} from 'react-native'
+import {StyleSheet} from 'react-native'
 import {responsiveFontSize, responsiveHeight, responsiveWidth} from 'react-native-responsive-dimensions'
 import color from '../../../assets/styles/colors'
 import font from '../../../assets/styles/fontStyles'
