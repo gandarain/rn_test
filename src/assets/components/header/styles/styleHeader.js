@@ -5,10 +5,10 @@ import font from '../../../styles/fontStyles'
 
 export default StyleSheet.create({
   containerSafeArea: {
-    backgroundColor: color.header
+    backgroundColor: color.thema
   },
   container: {
-    backgroundColor: color.header,
+    backgroundColor: color.thema,
     flexDirection: 'row',
     paddingHorizontal: responsiveWidth(2.5),
     paddingVertical: responsiveHeight(3),

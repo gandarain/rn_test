@@ -4,10 +4,10 @@ import {View, Text, TouchableOpacity, StatusBar, Platform, Image, SafeAreaView} 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import {useNavigation} from '@react-navigation/native'
 import {responsiveFontSize} from 'react-native-responsive-dimensions'
-import color from '../../styles/themes/colorThemes'
-import styles from './StyleHeader'
+import color from '../../styles/colors'
+import styles from './styles/styleHeader'
 
-export const Header = (props) => {
+const Header = (props) => {
   const navigation = useNavigation()
   const renderLeft = () => {
     if (props.left) {
@@ -71,3 +71,5 @@ export const Header = (props) => {
     </SafeAreaView>
   )
 }
+
+export default Header
